@@ -1,4 +1,5 @@
-let token = 'xoxb-186544031936-fqmXjxge1JODpcJw8Dzty9z8'
+const token = 'xoxb-186544031936-DRxdyogTAWCQ3QWDETLyYFO9'
+const schedule = require('node-schedule')
 
 // var config = require('./config.json')[process.env.NODE_ENV || 'development']
 
@@ -21,18 +22,52 @@ var bot = controller.spawn({
     throw new Error('Could not connect to Slack')
   } else {
     console.log('PRET A TRAVAILLER !!')
-    // bot.api.chat.postMessage({
-    //   'token': process.env.token,
-    //   'channel': '#philippe',
-    //   'text': 'Prêt à travailler',
-    //   'as_user': true
-    // })
   }
 })
 
 console.log(bot)
 
 // Scheduler
+
+// Every day at 11:00
+schedule.scheduleJob('0 11 * * * *', function () {
+  bot.api.chat.postMessage({
+    'token': token,
+    'channel': '#philippe',
+    'text': 'Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !',
+    'as_user': true
+  })
+})
+
+// Every Wednesday at 10:30
+schedule.scheduleJob('0 30 10 * * 3', function () {
+  bot.api.chat.postMessage({
+    'token': token,
+    'channel': '#philippe',
+    'text': 'Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h',
+    'as_user': true
+  })
+})
+
+// Every Wednesday at 16:00
+schedule.scheduleJob('0 0 16 * * 3', function () {
+  bot.api.chat.postMessage({
+    'token': token,
+    'channel': '#philippe',
+    'text': 'Les inscriptions pour le uzfood de lundi sont ouvertes : inscrivez-vous jusqu’à vendredi 16h, et si on est trop nombreux il y aura un tirage au sort',
+    'as_user': true
+  })
+})
+
+// Every Friday at 15:00
+schedule.scheduleJob('0 0 15 * * 5', function () {
+  bot.api.chat.postMessage({
+    'token': token,
+    'channel': '#philippe',
+    'text': 'Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi',
+    'as_user': true
+  })
+})
 
 // Waiting for specific message
 controller.hears(['hello', 'hi', 'salut', 'coucou', 'bonjour'], 'direct_message,direct_mention,mention', function (bot, message) {

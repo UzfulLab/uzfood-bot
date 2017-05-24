@@ -21,6 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "botkit": "^0.5.4",
+    "bottleneck": "^1.15.1",
+    "node-schedule": "^1.2.3",
     "nodemon": "^1.11.0"
   },
   "devDependencies": {
