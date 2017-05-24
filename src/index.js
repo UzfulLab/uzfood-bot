@@ -1,5 +1,7 @@
 const token = 'xoxb-186544031936-DRxdyogTAWCQ3QWDETLyYFO9'
 const schedule = require('node-schedule')
+const entracteURL = 'https://docs.google.com/spreadsheets/d/1J_eVajvsbHEY5dzxzW1sJKuSA-XxA85Yi6VCSH0H2WY/edit#gid=375624052'
+const uzfoodURL = 'https://docs.google.com/spreadsheets/d/1J_eVajvsbHEY5dzxzW1sJKuSA-XxA85Yi6VCSH0H2WY/edit#gid=1835906425'
 
 // var config = require('./config.json')[process.env.NODE_ENV || 'development']
 
@@ -30,7 +32,7 @@ console.log(bot)
 // Scheduler
 
 // Every day at 11:00
-schedule.scheduleJob('0 11 * * * *', function () {
+schedule.scheduleJob('0 0 11 * * *', function () {
   bot.api.chat.postMessage({
     'token': token,
     'channel': '#philippe',
@@ -44,7 +46,7 @@ schedule.scheduleJob('0 30 10 * * 3', function () {
   bot.api.chat.postMessage({
     'token': token,
     'channel': '#philippe',
-    'text': 'Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h',
+    'text': 'Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h: ' + entracteURL,
     'as_user': true
   })
 })
@@ -64,7 +66,7 @@ schedule.scheduleJob('0 0 15 * * 5', function () {
   bot.api.chat.postMessage({
     'token': token,
     'channel': '#philippe',
-    'text': 'Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi',
+    'text': 'Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi: ' + uzfoodURL,
     'as_user': true
   })
 })
