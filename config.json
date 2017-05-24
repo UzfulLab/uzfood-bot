@@ -1,0 +1,10 @@
+{
+  "development": {
+    "BOT_API_KEY": "xoxb-186544031936-fqmXjxge1JODpcJw8Dzty9z8",
+    "DEBUG": true
+  },
+  "production": {
+    "BOT_API_KEY": "xoxb-186544031936-fqmXjxge1JODpcJw8Dzty9z8",
+    "DEBUG": false
+  }
+}
