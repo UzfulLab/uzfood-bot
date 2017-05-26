@@ -1,10 +1,12 @@
 {
   "development": {
     "DEBUG": true,
-    "CHANNEL": "#philippe"
+    "CHANNEL": "#philippe",
+    "CHANNEL_TYPE": "groups"
   },
   "production": {
     "DEBUG": false,
-    "CHANNEL": "#_general"
+    "CHANNEL": "#_general",
+    "CHANNEL_TYPE": "channels"
   }
 }

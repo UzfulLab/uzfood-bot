@@ -24,7 +24,8 @@
     "botkit": "^0.5.4",
     "bottleneck": "^1.15.1",
     "node-schedule": "^1.2.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pluralize": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

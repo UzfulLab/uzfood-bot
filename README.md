@@ -15,7 +15,7 @@ npm run dev
 # lunches eslint to check if code respects it's syntax
 npm run eslint
 
-# Creates documentation in out/ directory. Don't forget to npm install -g jsdoc before
+# Creates documentation in out/ directory. Don't forget to `npm install -g jsdoc` before
 npm run jsdoc
 ```
 
@@ -24,11 +24,28 @@ This project uses eslint for its syntax. You should read [some documentation bef
 
 The bot daily messages are sent to `#philippe` on debug mode and on `#_general` on production mode.
 
+Yo need to set different environment variables:
+
+``` bash
+export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
+export SLACK_HUMAN_TOKEN="xoxp-XXXXXXXXXX-XXXXXXXXXXX-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+
+You'll find SLACK_HUMAN_TOKEN [here](https://api.slack.com/custom-integrations/legacy-tokens)
+
+You'll find SLACK_BOT_TOKEN [here](https://uzful.slack.com/apps/A0F7YS25R-bots) (and select Philippe Etechbot)
+
 
 ## Useful resources
-https://github.com/howdyai/botkit/blob/master/docs/readme-slack.md
-https://api.slack.com/events
-https://api.slack.com/bot-users
+[Botkit documentation](https://github.com/howdyai/botkit/blob/master/docs/readme-slack.md)
+
+[Slack events documentation](https://api.slack.com/events)
+
+[Slack bot users documentation](https://api.slack.com/bot-users)
+
+
+## Supported Commands
+Just ask Philippe some `help` on direct message, he knows :)
 
 ## Production
 No informations yet

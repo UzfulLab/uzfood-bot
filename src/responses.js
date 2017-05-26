@@ -1,3 +1,8 @@
+/**
+ * @file Helper of bot answers.
+ * @author Kevin Leiba
+ */
+
 const config = require('../config.json')[process.env.NODE_ENV || 'development']
 const token = process.env.SLACK_TOKEN
 
