@@ -9,12 +9,20 @@
 # install dependencies
 npm install
 
-# served with hot reload
+# served with hot reload. Also lunches eslint verification
 npm run dev
+
+# lunches eslint to check if code respects it's syntax
+npm run eslint
+
+# Creates documentation in out/ directory. Don't forget to npm install -g jsdoc before
+npm run jsdoc
 ```
 
 ## Informations
 This project uses eslint for its syntax. You should read [some documentation before ](http://eslint.org/docs/rules/)
+
+The bot daily messages are sent to `#philippe` on debug mode and on `#_general` on production mode.
 
 
 ## Useful resources
