@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.js --exec 'npm run eslint && node'",
-    "prod": "node ./src/index.js",
+    "start": "node ./src/index.js",
     "eslint": "./node_modules/eslint/bin/eslint.js ./src/",
     "jsdoc": "rm -rf out/ && jsdoc src/ -R README.md && open out/"
   },
