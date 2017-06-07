@@ -19,7 +19,7 @@ if (!token && !humanToken) {
   process.exit(1)
 }
 
-let Botkit = require('Botkit')
+let Botkit = require('botkit')
 // let os = require('os')
 
 let controller = Botkit.slackbot({
