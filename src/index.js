@@ -125,7 +125,7 @@ controller.hears(['prépare une commande', 'préparer une commande', 'une comman
         bot.reply(message, 'DINGDONG ! C\'est l\'heure de commander !')
         bot.reply(message, answers)
       } else {
-        console.log('\n\n\n\n\nERREUR')
+        console.log('\n\n\n\n\nERREUR', err)
         bot.reply(message, 'Désolé.... ya eu une erreur sur les commandes :/')
       }
     })

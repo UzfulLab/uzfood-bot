@@ -1,7 +1,7 @@
 {
   "development": {
     "DEBUG": true,
-    "CHANNEL": "#philippe",
+    "CHANNEL": "#food",
     "CHANNEL_TYPE": "groups"
   },
   "production": {
