@@ -36,8 +36,6 @@ let bot = controller.spawn({
   }
 })
 
-console.log(bot)
-
 // Scheduler
 
 /**
