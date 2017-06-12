@@ -46,7 +46,7 @@ schedule.scheduleJob('0 0 11 * * *', function () {
   responses.messages.post(bot, text)
 })
 
-schedule.scheduleJob('0 46 17 * * *', function () {
+schedule.scheduleJob('0 55 17 * * *', function () {
   const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
   responses.messages.post(bot, text)
 })
