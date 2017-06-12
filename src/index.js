@@ -10,6 +10,7 @@ const config = require('../config.json')[process.env.NODE_ENV || 'development']
 const schedule = require('node-schedule')
 const pluralize = require('pluralize')
 const entracteURL = 'https://docs.google.com/spreadsheets/d/1J_eVajvsbHEY5dzxzW1sJKuSA-XxA85Yi6VCSH0H2WY/edit#gid=375624052'
+const foodCheriUrl = 'https://www.foodcheri.com/'
 const uzfoodURL = 'https://docs.google.com/spreadsheets/d/1J_eVajvsbHEY5dzxzW1sJKuSA-XxA85Yi6VCSH0H2WY/edit#gid=1835906425'
 const token = process.env.SLACK_BOT_TOKEN
 const humanToken = process.env.SLACK_HUMAN_TOKEN
@@ -42,7 +43,7 @@ let bot = controller.spawn({
  * Sends a message every day at 11:00
  */
 schedule.scheduleJob('0 0 11 * * *', function () {
-  const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
+  const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !\n' + foodCheriUrl
   responses.messages.post(bot, text)
 })
 
