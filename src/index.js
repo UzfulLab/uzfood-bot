@@ -46,8 +46,8 @@ schedule.scheduleJob('0 0 11 * * *', function () {
   responses.messages.post(bot, text)
 })
 
-schedule.scheduleJob('0 36 17 * * *', function () {
-  const text = '@here \n Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
+schedule.scheduleJob('0 46 17 * * *', function () {
+  const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
   responses.messages.post(bot, text)
 })
 
@@ -90,6 +90,12 @@ controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', func
     'Demande moi de `préparer une commande`, ou juste `une commande` tout en précisant dans combien de minutes tu veux ce soit:\n' +
     '`Prépare une commande pour dans 5 minutes philou`\n\n\n' +
     'Il suffit à tout le monde de répondre à ton propre message puis je ferai un récap de tout ce qui a été demandé :ok_hand:'
+  )
+})
+
+controller.hears(['test'], 'direct_message,direct_mention,mention', function (bot, message) {
+  bot.reply(message,
+    'Je confirme, ton push est ok <@kevin>'
   )
 })
 
