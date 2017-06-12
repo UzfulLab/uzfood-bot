@@ -77,6 +77,53 @@ if (process.env.NODE_ENV === 'development') {
     // console.log(users)
     bot.reply(message, 'regarde ta console')
   })
+
+  /**
+   * This function displays all the answers of a thread after a certain amount of minutes
+   * @todo Display username after a command
+   * @todo Make regex to be sure of what the user has wrote
+   */
+  controller.hears(['commande'], 'direct_mention,mention', function (bot, message) {
+    let regexpMinute = /\d{1,}\s{0,}min\w*/i
+    let regexpDuration = /\d*/i
+    let match = message.text.match(regexpMinute)
+    let timer = 10
+    if (match) {
+      timer = Number(match[0].match(regexpDuration))
+    }
+    setTimeout(function () {
+      console.log('\n\n\n======\n')
+      console.log(message.channel)
+      console.log(message.ts)
+      console.log('\n======\n\n\n')
+      bot.api[config['CHANNEL_TYPE']].replies({
+        token: humanToken,
+        channel: message.channel,
+        thread_ts: message.ts
+      }, function (err, res) {
+        if (!err) {
+          console.log('\n\n\n\n\nPAS ERREUR' + res.messages[0].text)
+          const messages = res.messages
+          messages.shift()
+          let answers = ''
+          for (let message of messages) {
+            answers += message.text + '\n'
+          }
+          console.log(message)
+          console.log('===____==____======\n\n\n')
+          // console.log(res.messages[0])
+          bot.reply(message, 'DINGDONG ! C\'est l\'heure de commander ! <@' + message.user + '>')
+          bot.reply(message, answers)
+        } else {
+          console.log('\n\n\n\n\nERREUR', err)
+          bot.reply(message, 'Désolé.... ya eu une erreur sur les commandes :/')
+        }
+      })
+    // }, timer * 60000)
+    }, 500)
+    // }, 5000)
+    bot.reply(message, 'Ok, j\'attends ' + pluralize('minute', timer, true) + ' puis je vous fais un recap de vos demandes. Pour faire ta commande, réponds au message juste au dessus en `thread`')
+  })
 }
 
 /**
@@ -89,49 +136,6 @@ controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', func
     '`Prépare une commande pour dans 5 minutes philou`\n\n\n' +
     'Il suffit à tout le monde de répondre à ton propre message puis je ferai un récap de tout ce qui a été demandé :ok_hand:'
   )
-})
-
-/**
- * This function displays all the answers of a thread after a certain amount of minutes
- * @todo Display username after a command
- * @todo Make regex to be sure of what the user has wrote
- */
-controller.hears(['commande'], 'direct_mention,mention', function (bot, message) {
-  let regexpMinute = /\d{1,}\s{0,}min\w*/i
-  let regexpDuration = /\d*/i
-  let match = message.text.match(regexpMinute)
-  let timer = 10
-  if (match) {
-    timer = Number(match[0].match(regexpDuration))
-  }
-  setTimeout(function () {
-    console.log('\n\n\n======\n')
-    console.log(message.channel)
-    console.log(message.ts)
-    console.log('\n======\n\n\n')
-    bot.api[config['CHANNEL_TYPE']].replies({
-      token: humanToken,
-      channel: message.channel,
-      thread_ts: message.ts
-    }, function (err, res) {
-      if (!err) {
-        console.log('\n\n\n\n\nPAS ERREUR' + res.messages[0].text)
-        const messages = res.messages
-        messages.shift()
-        let answers = ''
-        for (let message of messages) {
-          answers += message.text + '\n'
-        }
-        bot.reply(message, 'DINGDONG ! C\'est l\'heure de commander !')
-        bot.reply(message, answers)
-      } else {
-        console.log('\n\n\n\n\nERREUR', err)
-        bot.reply(message, 'Désolé.... ya eu une erreur sur les commandes :/')
-      }
-    })
-  }, timer * 60000)
-  // }, 5000)
-  bot.reply(message, 'Ok, j\'attends ' + pluralize('minute', timer, true) + ' puis je vous fais un recap de vos demandes. Pour faire ta commande, réponds au message juste au dessus en `thread`')
 })
 
 controller.hears(['bonjour', 'hey', 'salut', 'coucou'], 'direct_message,direct_mention,mention', function (bot, message) {

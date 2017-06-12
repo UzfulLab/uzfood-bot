@@ -1,12 +1,12 @@
 {
   "development": {
     "DEBUG": true,
-    "CHANNEL": "#foodtest",
+    "CHANNEL": "#_general",
     "CHANNEL_TYPE": "channels"
   },
   "production": {
     "DEBUG": false,
-    "CHANNEL": "#food",
+    "CHANNEL": "#foodtest",
     "CHANNEL_TYPE": "channels"
   }
 }
