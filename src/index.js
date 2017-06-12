@@ -42,11 +42,6 @@ let bot = controller.spawn({
  * Sends a message every day at 11:00
  */
 schedule.scheduleJob('0 0 11 * * *', function () {
-  const text = '@here \n Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
-  responses.messages.post(bot, text)
-})
-
-schedule.scheduleJob('0 55 17 * * *', function () {
   const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !'
   responses.messages.post(bot, text)
 })
@@ -55,7 +50,7 @@ schedule.scheduleJob('0 55 17 * * *', function () {
  * Sends a message every wednesday at 10:30
  */
 schedule.scheduleJob('0 30 10 * * 3', function () {
-  const text = 'Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h:\n' + entracteURL
+  const text = '<!here> Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h:\n' + entracteURL
   responses.messages.post(bot, text)
 })
 
@@ -63,7 +58,7 @@ schedule.scheduleJob('0 30 10 * * 3', function () {
  * Sends a message every wednesday at 16:00
  */
 schedule.scheduleJob('0 0 16 * * 3', function () {
-  const text = 'Les inscriptions pour le uzfood de lundi sont ouvertes : inscrivez-vous jusqu’à vendredi 16h, et si on est trop nombreux il y aura un tirage au sort\n' + uzfoodURL
+  const text = '<!here> Les inscriptions pour le uzfood de lundi sont ouvertes : inscrivez-vous jusqu’à vendredi 16h, et si on est trop nombreux il y aura un tirage au sort\n' + uzfoodURL
   responses.messages.post(bot, text)
 })
 
@@ -71,15 +66,17 @@ schedule.scheduleJob('0 0 16 * * 3', function () {
  * Sends a message every friday at 15:00
  */
 schedule.scheduleJob('0 0 15 * * 5', function () {
-  const text = 'Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi:\n' + uzfoodURL
+  const text = '<!here> Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi:\n' + uzfoodURL
   responses.messages.post(bot, text)
 })
 
-controller.hears(['user list'], 'direct_message,direct_mention,mention', function (bot, message) {
-  informations.users.members(bot)
-  // console.log(users)
-  bot.reply(message, 'regarde ta console')
-})
+if (process.env.NODE_ENV === 'development') {
+  controller.hears(['user list'], 'direct_message,direct_mention,mention', function (bot, message) {
+    informations.users.members(bot)
+    // console.log(users)
+    bot.reply(message, 'regarde ta console')
+  })
+}
 
 /**
  * Explain the user how to use Philippe
@@ -90,13 +87,6 @@ controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', func
     'Demande moi de `préparer une commande`, ou juste `une commande` tout en précisant dans combien de minutes tu veux ce soit:\n' +
     '`Prépare une commande pour dans 5 minutes philou`\n\n\n' +
     'Il suffit à tout le monde de répondre à ton propre message puis je ferai un récap de tout ce qui a été demandé :ok_hand:'
-  )
-})
-
-controller.hears(['test'], 'direct_message,direct_mention,mention', function (bot, message) {
-  bot.reply(message,
-    'Je confirme, ton push est ok <@kevin>\n' +
-    Date()
   )
 })
 
