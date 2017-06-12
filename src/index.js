@@ -119,8 +119,7 @@ if (process.env.NODE_ENV === 'development') {
           bot.reply(message, 'Désolé.... ya eu une erreur sur les commandes :/')
         }
       })
-    // }, timer * 60000)
-    }, 500)
+    }, timer * 60000)
     // }, 5000)
     bot.reply(message, 'Ok, j\'attends ' + pluralize('minute', timer, true) + ' puis je vous fais un recap de vos demandes. Pour faire ta commande, réponds au message juste au dessus en `thread`')
   })
