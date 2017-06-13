@@ -42,7 +42,7 @@ let bot = controller.spawn({
 /**
  * Sends a message every day at 11:00
  */
-schedule.scheduleJob('0 33 10 * * *', function () {
+schedule.scheduleJob('0 30 10 * * *', function () {
   const text = '<!here> Attention il ne reste plus qu’une demi heure pour faire ta commande sur foodcheri, à ton appli !\n' + foodCheriUrl
   responses.messages.post(bot, text)
 })
