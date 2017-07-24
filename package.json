@@ -11,7 +11,7 @@
     "jsdoc": "rm -rf out/ && jsdoc src/ -R README.md && open out/"
   },
   "engines": {
-    "node": ">= 7.2.1"
+    "node": ">= 8.1.4"
   },
   "keywords": [
     "bot",
