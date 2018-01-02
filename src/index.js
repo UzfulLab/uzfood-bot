@@ -49,27 +49,27 @@ schedule.scheduleJob('0 31 10 * * 1-5', function () {
 
 /**
  * Sends a message every wednesday at 10:30
- */
+ 
 schedule.scheduleJob('0 30 10 * * 3', function () {
   const text = '<!here> Viens voir le menu du jour à l’entracte et n’oublie pas de passer commande avant 11h:\n' + entracteURL
   responses.messages.post(bot, text)
-})
+})*/
 
 /**
  * Sends a message every wednesday at 16:00
- */
+ 
 schedule.scheduleJob('0 0 16 * * 3', function () {
   const text = '<!here> Les inscriptions pour le uzfood de lundi sont ouvertes : inscrivez-vous jusqu’à vendredi 16h, et si on est trop nombreux il y aura un tirage au sort\n' + uzfoodURL
   responses.messages.post(bot, text)
-})
+})*/
 
 /**
  * Sends a message every friday at 15:00
- */
+ 
 schedule.scheduleJob('0 0 15 * * 5', function () {
   const text = '<!here> Rappel, plus qu’une heure pour s’inscrire au uzfood de lundi:\n' + uzfoodURL
   responses.messages.post(bot, text)
-})
+})*/
 
 if (process.env.NODE_ENV === 'development') {
   controller.hears(['user list'], 'direct_message,direct_mention,mention', function (bot, message) {
